@@ -1,5 +1,5 @@
-## Electron + TypeScript + React
-Boilerplate for a project using Electron, React and Typescript
+## Simple Browser with Electron + TypeScript + React
+Simple Browser with minimal needed to developers
 
 ## Installation
 
@@ -27,6 +27,14 @@ or
 
 ```bash
 npm run dev
+```
+
+## Shortcuts
+
+```
+Cmd Or Ctrl + I -> open devtools
+Cmd or Ctrl + W -> close browser
+F5 -> refrsh page
 ```
 
 ## Packaging
