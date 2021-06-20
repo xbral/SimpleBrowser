@@ -68,6 +68,8 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "electron-store": "^8.0.0",
+    "json-schema-typed": "^7.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"
