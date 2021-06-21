@@ -16,11 +16,13 @@ function CreateShortcuts (win: BrowserWindow): void {
   }
 
   function close () {
+    globalShortcut.unregisterAll();
     win.close();
   }
 
   globalShortcut.register('F11', fullScreen);
   globalShortcut.register('CmdOrCtrl+I', openDevTools);
+  globalShortcut.register('CmdOrCtrl+R', reload);
   globalShortcut.register('F5', reload);
   globalShortcut.register('CmdOrCtrl+W', close);
 }

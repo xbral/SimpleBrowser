@@ -59,7 +59,7 @@ const Home: React.FC = () => {
         </OhterButtonsContainer>
       </HeaderContainer>
       <WebviewContainer>
-        <webview src="https://google.com" ref={webviewRef}></webview>
+        <webview src="http://localhost:3001" ref={webviewRef}></webview>
       </WebviewContainer>
     </Container>
   );

@@ -1,7 +1,8 @@
-import { BrowserWindow } from 'electron';
+import { BrowserWindow, globalShortcut } from 'electron';
 import userPreferences from './store';
 import * as path from 'path';
 import * as url from 'url';
+import CreateShortcuts from './createShortcuts';
 const store = userPreferences.store;
 
 function CreateWindow (): BrowserWindow {
@@ -19,6 +20,8 @@ function CreateWindow (): BrowserWindow {
     }
   });
 
+  win.removeMenu();
+
   if (process.env.NODE_ENV === 'development') {
     win.loadURL('http://localhost:4000');
   } else {
@@ -33,6 +36,14 @@ function CreateWindow (): BrowserWindow {
 
   win.on('closed', () => {
     win.destroy();
+  });
+
+  win.on('focus', () => {
+    CreateShortcuts(win);
+  });
+
+  win.on('blur', () => {
+    globalShortcut.unregisterAll();
   });
 
   return win;

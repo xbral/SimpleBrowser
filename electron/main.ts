@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, globalShortcut } from 'electron';
 
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 import CreateWindow from './createWindow';
@@ -7,7 +7,7 @@ import Tray from './tray';
 
 function App () {
   const win = CreateWindow();
-  CreateShortcuts(win);
+  // CreateShortcuts(win);
   Tray();
 }
 
@@ -33,6 +33,10 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', recreateWindow);
+
+app.on('will-quit', () => {
+  globalShortcut.unregisterAll();
+});
 
 function recreateWindow () {
   // On macOS it's common to re-create a window in the app when the
