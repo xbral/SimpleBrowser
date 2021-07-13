@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react';
+import React, { memo, useRef, useState, useEffect } from 'react';
 import { remote } from 'electron';
 import SwitchButton from '../../components/SwitchButton';
 import { Container, HeaderContainer, WebviewContainer, WindowButtonContainer, OhterButtonsContainer } from './styles';
@@ -6,8 +6,12 @@ import { Container, HeaderContainer, WebviewContainer, WindowButtonContainer, Oh
 const Home: React.FC = () => {
   const webviewRef = useRef<React.DetailedHTMLProps<React.WebViewHTMLAttributes<HTMLWebViewElement>, HTMLWebViewElement>>();
   const win = remote.getCurrentWindow();
-  const [url, setUrl] = useState('http://');
+  const [url, setUrl] = useState('http://localhost:3000');
   const [maximized, setMaximized] = useState(false);
+
+  useEffect(() => {
+    handleGo();
+  }, []);
 
   function handleCloseBrowser () {
     win.close();
@@ -59,7 +63,7 @@ const Home: React.FC = () => {
         </OhterButtonsContainer>
       </HeaderContainer>
       <WebviewContainer>
-        <webview src="http://localhost:3001" ref={webviewRef}></webview>
+        <webview src="http://localhost:3001" id="webview" ref={webviewRef}></webview>
       </WebviewContainer>
     </Container>
   );

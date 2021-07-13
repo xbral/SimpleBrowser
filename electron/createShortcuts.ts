@@ -8,7 +8,14 @@ function CreateShortcuts (win: BrowserWindow): void {
   }
 
   function openDevTools () {
-    win.webContents.openDevTools();
+    win.webContents.executeJavaScript(`
+      const webview = document.querySelector('webview');
+      if(webview.isDevToolsOpened()) {
+        webview.closeDevTools();
+      } else {
+        webview.openDevTools();
+      }
+    `);
   }
 
   function reload () {
